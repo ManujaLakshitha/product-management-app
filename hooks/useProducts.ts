@@ -1,26 +1,29 @@
-import { useState, useEffect } from 'react';
-import { getProducts, saveProducts } from '../lib/localStorage';
+import { useState, useEffect } from "react";
+import { Product } from "../types/Product";
+import { getProducts, saveProducts } from "../lib/localStorage";
 
 export const useProducts = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     setProducts(getProducts());
   }, []);
 
-  const addProduct = (product) => {
+  const addProduct = (product: Omit<Product, "id">) => {
     const newProducts = [...products, { ...product, id: Date.now() }];
     setProducts(newProducts);
     saveProducts(newProducts);
   };
 
-  const updateProduct = (id, updated) => {
-    const newProducts = products.map(p => p.id === id ? { ...p, ...updated } : p);
+  const updateProduct = (id: number, updated: Partial<Product>) => {
+    const newProducts = products.map(p =>
+      p.id === id ? { ...p, ...updated } : p
+    );
     setProducts(newProducts);
     saveProducts(newProducts);
   };
 
-  const deleteProduct = (id) => {
+  const deleteProduct = (id: number) => {
     const newProducts = products.filter(p => p.id !== id);
     setProducts(newProducts);
     saveProducts(newProducts);

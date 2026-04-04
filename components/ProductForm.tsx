@@ -1,23 +1,21 @@
 "use client";
 import { useState } from "react";
+import { Product } from "../types/Product";
 
-export default function ProductForm({ onSubmit, initialData = {} }) {
+interface Props {
+  onSubmit: (product: Omit<Product, "id">) => void;
+  initialData?: Partial<Product>;
+}
+
+export default function ProductForm({ onSubmit, initialData = {} }: Props) {
   const [name, setName] = useState(initialData.name || "");
-  const [price, setPrice] = useState(initialData.price || "");
+  const [price, setPrice] = useState(initialData.price || 0);
   const [description, setDescription] = useState(initialData.description || "");
   const [image, setImage] = useState(initialData.image || "");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const product = {
-      name,
-      price,
-      description,
-      image,
-    };
-
-    onSubmit(product);
+    onSubmit({ name, price, description, image });
   };
 
   return (
@@ -35,7 +33,7 @@ export default function ProductForm({ onSubmit, initialData = {} }) {
         placeholder="Price"
         className="w-full p-2 border rounded"
         value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        onChange={(e) => setPrice(Number(e.target.value))}
       />
 
       <textarea
