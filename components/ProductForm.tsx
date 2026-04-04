@@ -23,7 +23,7 @@ export default function ProductForm({ onSubmit, initialData = {} }: Props) {
     }
 
     if (!price || price <= 0) {
-      setError("Valid price is required");
+      setError("Price must be greater than 0");
       return;
     }
 
