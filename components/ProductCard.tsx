@@ -10,9 +10,9 @@ interface Props {
 export default function ProductCard({ product, onDelete }: Props) {
 
     const router = useRouter();
-    
+
     return (
-        <div className="border p-4 rounded shadow">
+        <div className="border p-4 rounded-xl shadow hover:shadow-lg transition">
             <h2 className="text-xl font-bold">{product.name}</h2>
             <p className="text-gray-600">Rs. {product.price}</p>
             <p className="text-sm mt-2">{product.description}</p>

@@ -6,7 +6,7 @@ export default function ProductList() {
   const { products, deleteProduct } = useProducts();
 
   if (products.length === 0) {
-    return <p>No products available</p>;
+    return <p className="text-center text-gray-500">No products yet. Add one!</p>;
   }
 
   return (
