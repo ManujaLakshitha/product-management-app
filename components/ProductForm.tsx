@@ -12,14 +12,28 @@ export default function ProductForm({ onSubmit, initialData = {} }: Props) {
   const [price, setPrice] = useState(initialData.price || 0);
   const [description, setDescription] = useState(initialData.description || "");
   const [image, setImage] = useState(initialData.image || "");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!name.trim()) {
+      setError("Product name is required");
+      return;
+    }
+
+    if (!price || price <= 0) {
+      setError("Valid price is required");
+      return;
+    }
+
+    setError("");
     onSubmit({ name, price, description, image });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+      {error && <p className="text-red-500">{error}</p>}
       <input
         type="text"
         placeholder="Product Name"
