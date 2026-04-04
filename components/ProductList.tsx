@@ -1,12 +1,14 @@
 "use client";
-import ProductCard from "./ProductCard";
 import { useProducts } from "../hooks/useProducts";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import ProductCard from "./ProductCard";
+import { useRouter } from "next/navigation";
 
 export default function ProductList() {
   const { products, deleteProduct } = useProducts();
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -25,6 +27,7 @@ export default function ProductList() {
             key={product.id}
             product={product}
             onDelete={deleteProduct}
+            onEdit={() => router.push(`/edit/${product.id}`)}
           />
         ))}
       </div>

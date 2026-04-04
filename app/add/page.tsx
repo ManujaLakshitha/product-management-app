@@ -1,8 +1,11 @@
 "use client";
-import ProductForm from "../../components/ProductForm";
-import { useProducts } from "../../hooks/useProducts";
+
+import ProductForm from "@/components/ProductForm";
+import { useProducts } from "@/hooks/useProducts";
 import { useRouter } from "next/navigation";
-import { Product } from "../../types/Product";
+import { Product } from "@/types/Product";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function AddProduct() {
   const { addProduct } = useProducts();
@@ -14,8 +17,11 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl mb-4">Add Product</h1>
+    <div className="space-y-4">
+      <Button variant="ghost" onClick={() => router.back()} className="gap-2">
+        <ArrowLeft className="h-4 w-4" />
+        Back
+      </Button>
       <ProductForm onSubmit={handleAdd} />
     </div>
   );
