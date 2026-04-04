@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ Product Management App
 
-## Getting Started
+A simple Product Management web application built using **Next.js (App Router)** and **Tailwind CSS**.
+Users can add, view, edit, and delete products with data stored in the browser using Local Storage.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+* ✅ Add Product
+* ✅ View Products
+* ✅ Edit Product
+* ✅ Delete Product
+* ✅ Local Storage data persistence
+* ✅ Responsive UI with Tailwind CSS
+
+### ⭐ Bonus (if implemented)
+
+* 🔍 Search / Filter products
+* 🌙 Dark mode
+* ⚠️ Form validation
+* 🔔 Toast notifications
+
+---
+
+## 🛠️ Tech Stack
+
+* **Next.js 16 (App Router)**
+* **React 19**
+* **Tailwind CSS**
+* **TypeScript**
+* Local Storage (for data handling)
+
+---
+
+## 📁 Project Structure
+
+```
+product-management-app/
+│
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx              # Product List (Home)
+│   ├── add/
+│   │   └── page.tsx          # Add Product
+│   ├── edit/
+│   │   └── [id]/
+│   │       └── page.tsx      # Edit Product
+│   └── globals.css
+│
+├── components/
+│   ├── ui/
+│   ├── DarkMode.tsx
+│   ├── EmptyState.tsx
+│   ├── NavBar.tsx
+│   ├── ProductForm.tsx
+│   ├── ProductCard.tsx
+│   ├── ProductList.tsx
+│   ├── SearchBar.tsx
+│   └── theme-provider.tsx
+│
+├── hooks/
+│   └── useProducts.ts        # Custom hook for product logic
+│
+├── lib/
+│   ├── localStorage.ts       # Local storage handling
+│   └── utils.ts
+│
+├── tailwind.config.ts
+├── postcss.config.js
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-link>
+cd product-management-app
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Open in browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 💾 Data Handling
 
-To learn more about Next.js, take a look at the following resources:
+* All product data is stored in **Local Storage**
+* No backend or database is used
+* Data persists even after page refresh
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📌 Assumptions
 
-## Deploy on Vercel
+* Each product has a unique ID (generated manually or via timestamp)
+* Image is optional (URL-based)
+* No authentication is required
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Possible Improvements
+
+* Add backend (Node.js / Firebase)
+* Add authentication (login/register)
+* Improve UI with component libraries (e.g., shadcn/ui)
+* Add pagination for large product lists
+* Improve form validation
+
+---
+
+## 👨‍💻 Author
+
+* Your Name
+
+---
+
+## 📄 License
+
+This project is for assessment purposes only.
